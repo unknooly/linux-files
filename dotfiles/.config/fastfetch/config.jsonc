@@ -1,0 +1,178 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+
+    "logo":{
+        "type":"auto",
+        "source":"arch",
+        "width":null,
+        "height":null,
+        "padding":{
+            "top":2,
+            "left":0,
+            "right":6
+        }
+    },//logo
+
+    "display":{
+        "separator":" ",
+        "color":{
+            "output":"white"
+        },
+        "percent":{
+            "type":[
+                "num",
+                "num-color"
+            ],
+            "ndigits": 2,
+            "color":{
+                "green":"green",
+                "yellow":"light_yellow",
+                "red":"red"
+            }
+        },
+        "key": {
+            "type": "both-2",
+            "paddingLeft": 2
+        },
+        "constants": [
+            "─────────────────────────",
+            "                     ",
+            "────────────"
+        ]
+    }, //display
+
+    "modules":[
+        {
+            "type": "title",
+            "key": " ",
+            "color": {
+                "user": "green",
+                "at": "green",
+                "host": "green"
+            },
+            "format": "{$2}{user-name-colored}{#1}{at-symbol-colored}{#}{host-name-colored}"
+        },
+        "break",
+
+        // SOFTWARE
+        {
+            "type": "custom",
+            "format": "┌{$1} {#1} Software {#} {$1}┐"
+        },
+        {
+            "type":"os",
+            "keyColor":"red",
+            "key":"OS",
+            "format":"{name} {arch}"
+        },
+        {
+            "type": "packages",
+            "keyColor":"bright_blue",
+            "combined": true
+        },
+        {
+            "type": "custom",
+            "format": "└{$1}{$3}{$1}┘"
+        },
+        "break",
+
+        // HARDWARE
+        {
+            "type": "custom",
+            "format": "┌{$1} {#1} Hardware {#} {$1}┐"
+        },
+        {
+            "type":"kernel",
+            "keyColor":"magenta",
+            "key":"Kernel",
+            "format": "{sysname} {release}"
+        },
+        {
+            "type": "host",
+            "keyColor": "green",
+            "key": "MOBO",
+            "format": "{name}"
+        },
+        {
+            "type": "cpu",
+            "keyColor": "yellow",
+            "key": "CPU",
+            "format": "{name} @ {freq-max}",
+            "temp":true
+        },
+        {
+            "type": "gpu",
+            "keyColor": "light_blue",
+            "key": "GPU",
+            "format": "{name}"
+        },
+        {
+            "type":"memory",
+            "keyColor": "magenta",
+            "key":"RAM",
+            "percent":{
+                "type":3,
+                "green":50,
+                "yellow":80
+            },
+            "format": "{percentage-bar} | {percentage} | ({used} / {total})"
+        },
+        {
+            "type": "swap",
+            "keyColor": "light_red",
+            "key": "Swap",
+            "percent": {
+                "type":3,
+                "green": 10,
+                "yellow": 50
+            },
+            "format": "{percentage-bar} | {percentage} | ({used} / {total})"
+        },
+        {
+            "type": "disk",
+            "keyColor":"light_green",
+            "percent": {
+                "green": 50,
+                "yellow": 80,
+                "type": 0
+            },
+            "format": "{size-used} / {size-total} ({size-percentage}) | {filesystem}"
+        },
+        {
+            "type": "custom",
+            "format": "└{$1}{$3}{$1}┘"
+        },
+        "break",
+        
+        // UPTIME+AGE
+        {
+            "type": "custom",
+            "format": "┌{$1} {#1} Sys Info {#} {$1}┐"
+        },
+        {
+            "type": "uptime",
+            "keyColor":"red",
+            "key": "Uptime"
+        },
+        {
+            "type": "disk",
+            "keyColor": "light_blue",
+            "key": "Age",
+            "folders": "/",
+            "format": "{days} days ({create-time:10})"
+        },
+        {
+            "type": "custom",
+            "format": "└{$1}{$3}{$1}┘"
+        },
+        "break",
+
+        // COLORS
+        {
+            "type": "colors",
+            "paddingLeft": 5,
+            "symbol": "block"
+        },
+        "break"
+    ]//modules
+}
