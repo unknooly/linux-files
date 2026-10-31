@@ -101,3 +101,19 @@ sudo pacman -S gvfs-mtp
     ```bash
     git remote set-url origin git@github.com:<username>/<repoName>.git
     ```
+
+
+
+# Commit signature (SSH)
+
+## Make new SSH key if needed
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+## Use SSH for commit signatures
+```bash
+git config --global gpg.format ssh
+git config --global user.signingkey ~/.ssh/id_ed25519.pub 
+git config --global commit.gpgsign true
+```
